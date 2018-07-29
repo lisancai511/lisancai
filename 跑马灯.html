@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="" name="Keywords">
+    <meta content="" name="description"/>
+    <title></title>
+    <link rel="icon" href="">
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+
+    }
+
+    #box {
+        width: 706px;
+        height: 402px;
+        margin: auto;
+        border: 1px solid black;
+        margin-top: 50px;
+    }
+
+    .mini {
+        width: 20%;
+        height: 25%;
+        opacity: 0;
+        float: left;
+        
+        box-sizing: border-box;
+    }
+
+    .none {
+        border: none;
+        background: white;
+    }
+
+    input {
+        width: 50px;
+        height: 30px;
+        margin: auto;
+        display: block;
+    }
+
+    .blue {
+        background: white;
+        opacity: 0.3;
+    }
+    .bg1{
+        background-image: url("images/3425a764034f78f0190e8bad73310a55b2191cab.png");
+    }
+
+
+
+</style>
+<body>
+<div id="box" class="bg1">
+
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+    <div class="mini"></div>
+
+</div>
+
+
+<input type="button" value="抽奖" id="btn">
+<script>
+    var obtn = document.getElementById('btn')
+    var odiv = document.getElementsByClassName('mini');
+    var arr = [6, 7, 8, 11, 12, 13]
+    for (var i = 0; i < arr.length; i++) {
+        odiv[arr[i]].className += ' none'
+
+    }
+    var timer2=null;
+    var step=10;
+    var i = 0;
+    var arr = [0, 1, 2, 3, 4, 9, 14, 19, 18, 17, 16, 15, 10, 5];
+    function yao(s) {
+        for (var j = 0; j < arr.length; j++) {
+            odiv[arr[j]].className = 'mini'
+        }
+        i++;
+        if(i>13){
+            i = 0
+        }
+        odiv[arr[i]].className += ' blue'
+        timer2 = setTimeout(function () {
+           step+=10;
+           yao(step)
+        },s);
+    }
+
+
+    obtn.onclick = function () {
+            step=10;
+            yao(step);
+
+            var time=Math.round(Math.random()*10+5)*500
+            setTimeout(function () {
+                clearInterval(timer2)
+            },time)
+
+
+    }
+
+</script>
+</body>
+</html>
